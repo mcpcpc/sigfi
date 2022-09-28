@@ -4,6 +4,8 @@
 from dash import dash
 from dash import page_registry
 
+from dash import Dash
+
 from layout.default import layout
 
 
