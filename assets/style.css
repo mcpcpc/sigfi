@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500&display=swap');
+
+input:invalid {
+    outline: none !important;
+}
+
+#candlestick {
+    height: 80vh !important;
+}
+
+#wrapper {
+    margin-left: 320px;
+    margin-right: 320px;
+}
+
+#navbar, #tools-navbar {
+    padding-top: 20px;
+}
+
+@media only screen and (max-width: 1500px) {
+    #tools-navbar {
+        display: none;
+    }
+
+    #wrapper {
+        margin-right: 0;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    #navbar {
+        display: none;
+    }
+
+    #wrapper {
+        margin-left: 0;
+    }
+}
