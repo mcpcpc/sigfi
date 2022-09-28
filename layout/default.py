@@ -99,7 +99,7 @@ def navbar(data):
                         dmc.Text("Candles", size="sm", color="gray"),
                     ]
                 ),
-                href="/charts",
+                href="/candles",
                 style={"textDecoration": "none"},
             )
         ],
