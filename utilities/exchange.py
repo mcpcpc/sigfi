@@ -34,8 +34,8 @@ class Endpoint:
 class Action(ABC):
     """Representation of an exchange's endpoint properties."""
 
-    allowed: List[dict]
     default: str
+    allowed: List[dict]
 
     @abstractmethod
     def verify(self, value: str) -> bool:
