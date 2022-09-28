@@ -28,7 +28,7 @@ layout=dmc.Container(
                     dmc.Select(
                         id="products",
                         label="Products",
-                        description="Available Token pairs",
+                        description="Available token pairs",
                         searchable=True,
                         nothingFound="Invalid product",
                         icon=[DashIconify(icon="radix-icons:magnifying-glass")]
