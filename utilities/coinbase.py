@@ -39,7 +39,7 @@ class Coinbase(Exchange):
     endpoint: Endpoint("https://api.exchange.coinbase.com")
     candles: Action = Candles
 
-    def products(self, params: dict = None) -> List[dict]:
+    def get_products(self, params: dict = None) -> List[dict]:
         """Get available Coinbase trading pairs."""
         products = self.endpoint.get(
             endpoint="/products",
@@ -47,7 +47,7 @@ class Coinbase(Exchange):
         )
         return products
     
-    def candles(self, product: str, params: dict = None) -> List[dict]:
+    def get_candles(self, product: str, params: dict = None) -> List[dict]:
         """Get open, high, low, close and volume Coinbase data."""
         records = self.endpoint.get(
             endpoint=f"/products/{product}/candles",
