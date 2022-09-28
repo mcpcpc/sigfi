@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from abc import abc
-from abc import abstractmethod
 from dataclasses import dataclass
 from dataclasses import field
 from datetime import datetime
