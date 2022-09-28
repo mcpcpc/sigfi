@@ -57,10 +57,10 @@ class Coinbase(Exchange):
         to_ohlcv = lambda record: dict(
             timestamp=datetime.fromtimestamp(int(record[0]), timezone.utc),
             open=float(record[1]),
-            open=float(record[2]),
-            open=float(record[3]),
-            open=float(record[4]),
-            open=float(record[5]),
+            high=float(record[2]),
+            low=float(record[3]),
+            close=float(record[4]),
+            volume=float(record[5]),
         )
         ohlcv = list(map(to_ohlcv, records))
         return ohlcv
