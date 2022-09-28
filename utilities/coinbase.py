@@ -48,7 +48,7 @@ class Coinbase(Exchange):
         )
         return products
     
-    def candles(self, product: str, params: dict = None) > List[dict]:
+    def candles(self, product: str, params: dict = None) -> List[dict]:
         """Get open, high, low, close and volume Coinbase data."""
         records = self.endpoint.get(
             endpoint=f"/products/{product}/candles",
