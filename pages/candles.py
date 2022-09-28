@@ -89,6 +89,19 @@ def update_products(exchange_value):
     value = data_sorted[0]["value"]
     return data_sorted, value
 
+@callback(
+    Output("timeframe", "data"),
+    Output("timeframe", "value"),
+    Input("exchange", "value"))
+def update_timeframe(exchange_value):
+    if exchange_value == "COINBASE":
+        exchange = Coinbase()
+    else:
+        return no_update, no_update
+    data = exchange.timeframe.allowed
+    value = data[-1]["value"]
+    return data, value
+
 register_page(
     __name__,
     path="/candles/",
