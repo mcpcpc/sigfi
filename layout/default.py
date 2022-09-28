@@ -96,7 +96,7 @@ def navbar(data):
                             radius=30,
                             variant="light",
                         ),
-                        dmc.Text("OHLCV Charts", size="sm", color="gray"),
+                        dmc.Text("Candles", size="sm", color="gray"),
                     ]
                 ),
                 href="/charts",
