@@ -91,7 +91,7 @@ def update_products(exchange_value):
 register_page(
     __name__,
     path="/candles/",
-    title="Charts | SigFi",
-    description="Charts for open, high, low, close and volume data.",
+    title="Candles | SigFi",
+    description="Charts for open, high, low, close and volume (OHLCV) data.",
     layout=layout
 )
