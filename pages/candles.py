@@ -3,10 +3,16 @@
 
 import dash_mantine_components as dmc
 
-from dash import register_page
+from dash import callback
 from dash import dcc
+from dash import register_page
+from dash import no_update
 
+from dash import Input
+from dash import Output
 from dash_iconify import DashIconify
+
+from utilities.coinbase import Coinbase
 
 layout=dmc.Container(
     children=[
@@ -30,7 +36,7 @@ layout=dmc.Container(
                         label="Products",
                         description="Available token pairs",
                         searchable=True,
-                        nothingFound="Invalid product",
+                        nothingFound="Invalid product option",
                         icon=[DashIconify(icon="radix-icons:magnifying-glass")]
                     ),
                     dmc.Select(
@@ -51,13 +57,40 @@ layout=dmc.Container(
             children=[
                 dcc.Graph(id="charts", config={"displayModeBar": False})
             ]
-        )
+        ),
+        dcc.Interval(id="live_update", max_intervals=1)
     ]
 )
 
+@callback(
+    Output("exchange", "data"),
+    Output("exchange", "value"),
+    Input("live_update", "n_intervals"))
+def update_exchanges(n_intervals):
+    data = [
+        {"label": "Coinbase", "value": "COINBASE"},
+        {"label": "Bitfenix", "value": "BITFENIX"},
+    ]
+    value = "COINBASE"
+    return data, value
+
+@callback(
+    Output("products", "data"),
+    Output("products", "value"),
+    Input("exchange", "value"))
+def update_products(exchange_value):
+    if exchange_value == "COINBASE":
+        exchange = Coinbase()
+    else:
+        return no_update, no_update
+    data = exchange.get_products()
+    data_sorted = sorted(data, key=lambda d: d["label"])
+    value = data_sorted[0]["value"]
+    return data_sorted, value
+
 register_page(
     __name__,
-    path="/charts/",
+    path="/candles/",
     title="Charts | SigFi",
     description="Charts for open, high, low, close and volume data.",
     layout=layout
