@@ -24,7 +24,7 @@ class Endpoint:
     def get(self, endpoint: str, params: dict = None) -> List[dict]:
         response = get(
             self.api + endpoint,
-            headers=self.headers
+            headers=self.headers,
             params=params
         )
         return response.json()
