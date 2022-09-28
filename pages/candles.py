@@ -69,7 +69,7 @@ layout=dmc.Container(
 def update_exchanges(n_intervals):
     data = [
         {"label": "Coinbase", "value": "COINBASE"},
-        {"label": "Bitfenix", "value": "BITFENIX"},
+        {"label": "BitFenix", "value": "BITFENIX"},
     ]
     value = "COINBASE"
     return data, value
@@ -106,6 +106,6 @@ register_page(
     __name__,
     path="/candles/",
     title="Candles | SigFi",
-    description="Charts for open, high, low, close and volume (OHLCV) data.",
+    description="Charts for OHLCV (open, high, low, close and volume) data.",
     layout=layout
 )
