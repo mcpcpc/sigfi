@@ -5,6 +5,7 @@ from dataclasses import dataclass
 from dataclasses import field
 from datetime import datetime
 from datetime import timezone
+from typing import List
 
 from utilities.exchange import Action
 from utilities.exchange import Endpoint
