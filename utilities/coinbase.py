@@ -35,8 +35,8 @@ class Candles(Action):
 class Coinbase(Exchange):
     """Coinbase exchange."""
 
-    name: str
-    endpoint: Endpoint("https://api.exchange.coinbase.com")
+    name: str = "Coinbase"
+    endpoint: Endpoint = Endpoint("https://api.exchange.coinbase.com")
     candles: Action = Candles
 
     def get_products(self, params: dict = None) -> List[dict]:
