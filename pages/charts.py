@@ -6,7 +6,7 @@ import dash_mantine_components as dmc
 from dash import register_page
 from dash import dcc
 
-from dash-iconify import DashIconify
+from dash_iconify import DashIconify
 
 layout=dmc.Container(
     children=[
