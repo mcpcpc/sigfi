@@ -20,7 +20,7 @@ class Candles(Action):
         default_factory=lambda: [
             {"label": "1m", "value": 60},
             {"label": "5m", "value": 300},
-            {"label": "15h", "value": 900},
+            {"label": "15m", "value": 900},
             {"label": "1h", "value": 3600},
             {"label": "6h", "value": 2160},
             {"label": "1d", "value": 86400}
@@ -37,7 +37,7 @@ class Coinbase(Exchange):
 
     name: str = "Coinbase"
     endpoint: Endpoint = Endpoint("https://api.exchange.coinbase.com")
-    candles: Action = Candles
+    candles: Action = Candles()
 
     def get_products(self, params: dict = None) -> List[dict]:
         """Get available Coinbase trading pairs."""
