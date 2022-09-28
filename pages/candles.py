@@ -83,7 +83,8 @@ def update_products(exchange_value):
         exchange = Coinbase()
     else:
         return no_update, no_update
-    data = exchange.get_products()
+    products = exchange.get_products()
+    data = [dict(label=x["id"], value=x[""]) for x in products]
     data_sorted = sorted(data, key=lambda d: d["label"])
     value = data_sorted[0]["value"]
     return data_sorted, value
