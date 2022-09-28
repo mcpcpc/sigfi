@@ -84,7 +84,7 @@ def update_products(exchange_value):
     else:
         return no_update, no_update
     products = exchange.get_products()
-    data = [dict(label=x["id"], value=x[""]) for x in products]
+    data = [dict(label=x["id"], value=x["id"]) for x in products]
     data_sorted = sorted(data, key=lambda d: d["label"])
     value = data_sorted[0]["value"]
     return data_sorted, value
