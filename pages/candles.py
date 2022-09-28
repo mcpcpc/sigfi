@@ -98,7 +98,7 @@ def update_timeframe(exchange_value):
         exchange = Coinbase()
     else:
         return no_update, no_update
-    data = exchange.timeframe.allowed
+    data = exchange.candles.allowed
     value = data[-1]["value"]
     return data, value
 

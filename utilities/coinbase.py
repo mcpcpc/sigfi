@@ -27,8 +27,8 @@ class Candles(Action):
         ]
     )
 
-    def verify(self, value) -> bool:
-        is_allowed = value in allowed
+    def verify_timeframe(self, value) -> bool:
+        is_allowed = value in allowed_timeframe
         return is_allowed
 
 @dataclass
