@@ -71,7 +71,7 @@ class CandlesFigures:
         self.figure.add_trace(
             graph_objects.Bar(
                 x=self.timestamp,
-                y=self.volume.
+                y=self.volume,
                 marker={"line": {"width": 0}},
                 opacity=0.3,
                 marker_color=dmc.theme.DEFAULT_COLORS["indigo"][6],
