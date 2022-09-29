@@ -17,7 +17,7 @@ from utilities.coinbase import Coinbase
 layout=dmc.Container(
     children=[
         dmc.Navbar(
-            id="tools-nabar",
+            id="tools-navbar",
             fixed=True,
             position={"top": 70, "right": 0},
             width={"base": 300},
