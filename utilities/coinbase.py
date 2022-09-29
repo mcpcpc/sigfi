@@ -15,7 +15,7 @@ from utilities.exchange import Exchange
 class Candles(Action):
     """Candles action."""
 
-    default: int = "60"
+    default: int = "86400"
     allowed: List[dict] = field(
         default_factory=lambda: [
             {"label": "1m", "value": "60"},
