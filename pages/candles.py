@@ -114,8 +114,7 @@ def update_options(exchange_value):
         return no_update, no_update
     allowed = exchange.options.allowed
     data = [x["label"] for x in allowed]
-    default = exchange.options.default
-    value = []
+    value = exchange.options.default
     return data, value 
 
 @callback(
