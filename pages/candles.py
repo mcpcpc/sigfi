@@ -105,7 +105,7 @@ def update_timeframe(exchange_value):
 
 @callback(
     Output("options", "data"),
-    Output("timeframe", "value"),
+    Output("options", "value"),
     Input("exchange", "value"))
 def update_options(exchange_value):
     if exchange_value == "COINBASE":
@@ -123,7 +123,7 @@ def update_options(exchange_value):
     Input("product", "value"),
     Input("timeframe", "value"),
     Input("options", "value"))
-def update_options(product, timeline, options):
+def update_candles(product, timeline, options):
     fig = subplots.make_subplots()
     return fig
 
