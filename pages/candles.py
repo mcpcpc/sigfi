@@ -119,11 +119,22 @@ def update_options(exchange_value):
 
 @callback(
     Output("candles", "figure"),
+    Input("exchange", "value"),
     Input("products", "value"),
     Input("timeframe", "value"),
     Input("options", "value"))
-def update_candles(product, timeline, options):
+def update_candles(exchange, product, timeline, options):
+    if exchange == "COINBASE":
+        exchange = Coinbase()
+    else:
+        return no_update, no_update
+    df = exchange.candles(product)
     fig = subplots.make_subplots()
+    fig.update_layout(
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+        font_family="Inter, sans-serif"
+    )
     return fig
 
 register_page(
