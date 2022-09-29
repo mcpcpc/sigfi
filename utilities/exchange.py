@@ -35,7 +35,7 @@ class Endpoint:
 class Action(ABC):
     """Representation of an exchange's endpoint properties."""
 
-    default: Union[str, list]
+    default: Union[str, List[str]]
     allowed: List[dict]
 
 

@@ -16,7 +16,7 @@ from utilities.exchange import Exchange
 class Options(Action):
     """Options action."""
 
-    default: str = ["vol", "ma"]
+    default: List[str] = ["vol", "ma"]
     allowed: List[dict] = field(
         default_factory=lambda: [
             {"label": "Moving Average", "value": "ma"},
