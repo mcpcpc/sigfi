@@ -32,7 +32,8 @@ class CandlesFigures:
         figure.update_layout(
             paper_bgcolor="rgba(0,0,0,0)",
             plot_bgcolor="rgba(0,0,0,0)",
-            font_family="Inter, sans-serif"
+            font_family="Inter, sans-serif",
+            xaxis_rangeslider_visible=False
         )
         self.figure = figure
     
