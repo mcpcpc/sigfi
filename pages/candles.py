@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from _typeshed import OpenTextModeUpdating
 import dash_mantine_components as dmc
 
 from dash import callback
@@ -10,10 +11,9 @@ from dash import no_update
 from dash import Input
 from dash import Output
 from dash_iconify import DashIconify
-from plotly import subplots
-from plotly import graph_objects
 
 from utilities.coinbase import Coinbase
+from utilities.options import CandlesFigures
 
 layout=dmc.Container(
     children=[
@@ -128,14 +128,13 @@ def update_candles(exchange, product, timeline, options):
         exchange = Coinbase()
     else:
         return no_update, no_update
-    df = exchange.get_candles(product)
-    fig = subplots.make_subplots()
-    fig.update_layout(
-        paper_bgcolor="rgba(0,0,0,0)",
-        plot_bgcolor="rgba(0,0,0,0)",
-        font_family="Inter, sans-serif"
-    )
-    return fig
+    data = exchange.get_candles(product)
+    cf = CandlesFigures(data)
+    fig = cf.create_figure()
+    cf.add_candles()
+    if "Volume" in options:
+        cf.add_volume()
+    return cf.get_figure()
 
 register_page(
     __name__,
