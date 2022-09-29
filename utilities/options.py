@@ -80,7 +80,7 @@ class CandlesFigures:
                 name="Volume"
             )
         )
-        fig.update_yaxes(
+        self.figure.update_yaxes(
             range=[0.0, max(self.volume) * 2],
             row=1,
             col=1,
