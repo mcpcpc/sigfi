@@ -99,7 +99,7 @@ def update_timeframe(exchange_value):
     else:
         return no_update, no_update
     data = exchange.candles.allowed
-    value = data[0]["value"]
+    value = data[-1]["value"]
     return data, value
 
 register_page(

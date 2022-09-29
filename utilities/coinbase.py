@@ -15,15 +15,15 @@ from utilities.exchange import Exchange
 class Candles(Action):
     """Candles action."""
 
-    default: int = 60
+    default: int = "60"
     allowed: List[dict] = field(
         default_factory=lambda: [
-            {"label": "1m", "value": 60},
-            {"label": "5m", "value": 300},
-            {"label": "15m", "value": 900},
-            {"label": "1h", "value": 3600},
-            {"label": "6h", "value": 2160},
-            {"label": "1d", "value": 86400}
+            {"label": "1m", "value": "60"},
+            {"label": "5m", "value": "300"},
+            {"label": "15m", "value": "900"},
+            {"label": "1h", "value": "3600"},
+            {"label": "6h", "value": "2160"},
+            {"label": "1d", "value": "86400"}
         ]
     )
 
