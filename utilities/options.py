@@ -86,7 +86,7 @@ class CandlesFigures:
         self.volume = [x["volume"] for x in self.data]
         self.figure.add_trace(
             graph_objects.Bar(
-                name="Volume"
+                name="Volume",
                 x=self.timestamp,
                 y=self.volume,
                 marker={"line": {"width": 0}},
