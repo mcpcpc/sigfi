@@ -24,12 +24,12 @@ class Options(Action):
     )
     allowed: List[dict] = field(
         default_factory=lambda: [
-            {"label": "Moving Average", "value": "ma"},
-            {"label": "Exponential Moving Average", "value": "ema"},
-            {"label": "Relative Strength Index", "value": "rsi"},
+            {"label": "Moving Average (MA)", "value": "ma"},
+            {"label": "Exponential Moving Average (EMA)", "value": "ema"},
+            {"label": "Relative Strength Index (RSI)", "value": "rsi"},
             {"label": "Volume", "value": "vol"},
             {"label": "Bollinger Bands", "value": "boll"},
-            {"label": "Moving Average Convergence/Divergence", "value": "macd"}
+            {"label": "MA Convergence/Divergence (MACD)", "value": "macd"}
         ]
     )
 
