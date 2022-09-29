@@ -18,8 +18,9 @@ class Options(Action):
 
     default: List[str] = field(
         default_factory=lambda: [
-            "vol",
-            "ma"
+            "MA",
+            "RSI",
+            "Volume"
         ]
     )
     allowed: List[dict] = field(
