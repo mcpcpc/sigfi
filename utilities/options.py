@@ -22,6 +22,17 @@ class CandlesFigures:
     low: Optional[List] = None
     close: Optional[List] = None
 
+    def _compute_moving_average(self, x: List[float], period: int = 20) -> List[float]:
+        ma = []
+        for i, _ in enumerate(x):
+            window = x[(i - period):i]
+            if len(window) > 0:
+                ma.append(sum(window) / len(window))
+            else:
+                ma.append(None)
+        return ma
+
+
     def create_figure(self) -> None:
         """Create Plotly figure."""
         figure = subplots.make_subplots(
@@ -50,18 +61,18 @@ class CandlesFigures:
         self.close = [x["close"] for x in self.data]
         self.figure.add_trace(
             graph_objects.Candlestick(
+                name="Candles",
                 x=self.timestamp,
                 open=self.open,
                 high=self.high,
                 low=self.low,
                 close=self.close,
-                name="Candles",
                 increasing_line_color=dmc.theme.DEFAULT_COLORS["indigo"][6],
-                increasing_fillcolor="rgba(0,0,0,0)",
                 increasing_line_width=2,
+                increasing_fillcolor="rgba(0,0,0,0)",
                 decreasing_line_color=dmc.theme.DEFAULT_COLORS["indigo"][6],
-                decreasing_fillcolor=dmc.theme.DEFAULT_COLORS["indigo"][6],
-                decreasing_line_width=2
+                decreasing_line_width=2,
+                decreasing_fillcolor=dmc.theme.DEFAULT_COLORS["indigo"][6]
             ),
             row=1,
             col=1,
@@ -75,12 +86,12 @@ class CandlesFigures:
         self.volume = [x["volume"] for x in self.data]
         self.figure.add_trace(
             graph_objects.Bar(
+                name="Volume"
                 x=self.timestamp,
                 y=self.volume,
                 marker={"line": {"width": 0}},
                 opacity=0.3,
-                marker_color=dmc.theme.DEFAULT_COLORS["indigo"][6],
-                name="Volume"
+                marker_color=dmc.theme.DEFAULT_COLORS["indigo"][6]
             ),
             row=1,
             col=1,
