@@ -106,7 +106,7 @@ def update_timeframe(exchange_value):
 @callback(
     Output("options", "data"),
     Output("timeframe", "value"),
-    Input("exchange", "value")
+    Input("exchange", "value"))
 def update_options(exchange_value):
     if exchange_value == "COINBASE":
         exchange = Coinbase()
