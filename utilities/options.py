@@ -88,7 +88,8 @@ class CandlesFigures:
         )
         self.figure.update_yaxes(
             range=[0.0, max(self.volume) * 2],
-            secondary_y=True
+            secondary_y=True,
+            visible=False
         )
 
     def get_figure(self) -> None:
