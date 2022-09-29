@@ -128,8 +128,7 @@ def update_candles(exchange, product, timeline, options):
     else:
         return no_update, no_update
     data = exchange.get_candles(product)
-    data_sorted = sorted(data, key=lambda d: d["timestamp"])
-    cf = CandlesFigures(data_sorted)
+    cf = CandlesFigures(data)
     fig = cf.create_figure()
     cf.add_candles()
     if "Volume" in options:
