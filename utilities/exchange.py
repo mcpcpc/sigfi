@@ -37,10 +37,6 @@ class Action(ABC):
     default: str
     allowed: List[dict]
 
-    @abstractmethod
-    def verify(self, value: str) -> bool:
-        ...
-
 
 @dataclass
 class Exchange(ABC):
@@ -50,6 +46,7 @@ class Exchange(ABC):
     endpoint: Endpoint
     products: Optional[Action] = None
     candles: Optional[Action] = None
+    options: Optional[Action] = None
 
     @abstractmethod
     def get_products(self) -> List[dict]:

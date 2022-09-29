@@ -7,10 +7,11 @@ from dash import callback
 from dash import dcc
 from dash import register_page
 from dash import no_update
-
 from dash import Input
 from dash import Output
 from dash_iconify import DashIconify
+from plotly import subplots
+from plotly import graph_objects
 
 from utilities.coinbase import Coinbase
 
@@ -55,7 +56,7 @@ layout=dmc.Container(
         dmc.LoadingOverlay(
             loaderProps={"variant": "bars"},
             children=[
-                dcc.Graph(id="charts", config={"displayModeBar": False})
+                dcc.Graph(id="candles", config={"displayModeBar": False})
             ]
         ),
         dcc.Interval(id="live_update", max_intervals=1)
@@ -101,6 +102,30 @@ def update_timeframe(exchange_value):
     data = exchange.candles.allowed
     value = exchange.candles.default
     return data, value
+
+@callback(
+    Output("options", "data"),
+    Output("timeframe", "value"),
+    Input("exchange", "value")
+def update_options(exchange_value):
+    if exchange_value == "COINBASE":
+        exchange = Coinbase()
+    else:
+        return no_update, no_update
+    allowed = exchange.options.allowed
+    data = [x["label"] for x in allowed]
+    default = exchange.options.default
+    value = []
+    return data, value 
+
+@callback(
+    Output("candles", "figure"),
+    Input("product", "value"),
+    Input("timeframe", "value"),
+    Input("options", "value"))
+def update_options(product, timeline, options):
+    fig = subplots.make_subplots()
+    return fig
 
 register_page(
     __name__,

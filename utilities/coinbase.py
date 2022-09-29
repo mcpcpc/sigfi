@@ -11,6 +11,24 @@ from utilities.exchange import Action
 from utilities.exchange import Endpoint
 from utilities.exchange import Exchange
 
+
+@dataclass
+class Options(Action):
+    """Options action."""
+
+    default: str = ["vol", "ma"]
+    allowed: List[dict] = field(
+        default_factory=lambda: [
+            {"label": "Moving Average", "value": "ma"},
+            {"label": "Exponential Moving Average", "value": "ema"},
+            {"label": "Relative Strength Index", "value": "rsi"},
+            {"label": "Volume", "value": "vol"},
+            {"label": "Bollinger Bands", "value": "boll"},
+            {"label": "Moving Average Convergence/Divergence", "value": "macd"}
+        ]
+    )
+
+
 @dataclass
 class Candles(Action):
     """Candles action."""
@@ -27,9 +45,6 @@ class Candles(Action):
         ]
     )
 
-    def verify(self, value) -> bool:
-        is_allowed = value in allowed_timeframe
-        return is_allowed
 
 @dataclass
 class Coinbase(Exchange):
@@ -38,6 +53,7 @@ class Coinbase(Exchange):
     name: str = "Coinbase"
     endpoint: Endpoint = Endpoint("https://api.exchange.coinbase.com")
     candles: Action = Candles()
+    options: Options = Options()
 
     def get_products(self, params: dict = None) -> List[dict]:
         """Get available Coinbase trading pairs."""
