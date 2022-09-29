@@ -33,7 +33,9 @@ class CandlesFigures:
             paper_bgcolor="rgba(0,0,0,0)",
             plot_bgcolor="rgba(0,0,0,0)",
             font_family="Inter, sans-serif",
-            xaxis_rangeslider_visible=False
+            xaxis_rangeslider_visible=False,
+            #margin=dict(l=0, r=0, t=0, b=0),
+            #showlegend=False
         )
         self.figure = figure
     
@@ -79,12 +81,13 @@ class CandlesFigures:
                 opacity=0.3,
                 marker_color=dmc.theme.DEFAULT_COLORS["indigo"][6],
                 name="Volume"
-            )
+            ),
+            row=1,
+            col=1,
+            secondary_y=True
         )
         self.figure.update_yaxes(
             range=[0.0, max(self.volume) * 2],
-            row=1,
-            col=1,
             secondary_y=True
         )
 
