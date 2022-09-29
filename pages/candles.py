@@ -128,7 +128,7 @@ def update_candles(exchange, product, timeline, options):
         exchange = Coinbase()
     else:
         return no_update, no_update
-    df = exchange.candles(product)
+    df = exchange.candles.get_candles(product)
     fig = subplots.make_subplots()
     fig.update_layout(
         paper_bgcolor="rgba(0,0,0,0)",

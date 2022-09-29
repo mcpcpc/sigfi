@@ -58,7 +58,7 @@ class Coinbase(Exchange):
     name: str = "Coinbase"
     endpoint: Endpoint = Endpoint("https://api.exchange.coinbase.com")
     candles: Action = Candles()
-    options: Options = Options()
+    options: Action = Options()
 
     def get_products(self, params: dict = None) -> List[dict]:
         """Get available Coinbase trading pairs."""
