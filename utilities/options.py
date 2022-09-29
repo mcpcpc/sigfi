@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import dash_mantine_components as dmc
+
 from dataclasses import dataclass
 from typing import List
 from typing import Optional
