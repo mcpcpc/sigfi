@@ -7,6 +7,7 @@ from dataclasses import dataclass
 from dataclasses import field
 from requests import get
 from typing import List
+from typing import Union
 from typing import Optional
 
 
@@ -34,7 +35,7 @@ class Endpoint:
 class Action(ABC):
     """Representation of an exchange's endpoint properties."""
 
-    default: str
+    default: Union[str, list]
     allowed: List[dict]
 
 
