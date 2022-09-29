@@ -23,7 +23,7 @@ class CandlesFigures:
     def create_figure(self) -> None:
         """Create Plotly figure."""
         figure = subplots.make_subplots(
-            spec=[[{"secondary_y": True}]],
+            specs=[[{"secondary_y": True}]],
             rows=1,
             cols=1
         )
