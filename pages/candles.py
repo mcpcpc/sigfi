@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from _typeshed import OpenTextModeUpdating
 import dash_mantine_components as dmc
 
 from dash import callback
