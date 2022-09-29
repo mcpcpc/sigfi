@@ -18,15 +18,15 @@ class Options(Action):
 
     default: List[str] = field(
         default_factory=lambda: [
-            "Moving Average",
+            "Moving Average (MA)",
             "Volume"
         ]
     )
     allowed: List[dict] = field(
         default_factory=lambda: [
-            {"label": "Moving Average", "value": "ma"},
+            {"label": "Moving Average (MA)", "value": "ma"},
             {"label": "EMA", "value": "ema"},
-            {"label": "RSI", "value": "rsi"},
+            {"label": "Relative Strength Index (RSI)", "value": "rsi"},
             {"label": "Volume", "value": "vol"},
             {"label": "Bollinger Bands", "value": "boll"},
             {"label": "MACD", "value": "macd"}
