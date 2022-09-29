@@ -36,7 +36,7 @@ class CandlesFigures:
     
     def add_candles(self) -> None:
         """Add Candles data to figure."""
-        if self.figure = None:
+        if self.figure == None:
             return
         self.timestamp = [x["timestamp"] for x in self.data]
         self.open = [x["open"] for x in self.data]
@@ -65,7 +65,7 @@ class CandlesFigures:
     
     def add_volume(self) -> None:
         """Add Volume data to figure."""
-        if self.figure = None:
+        if self.figure == None:
             return
         self.volume = [x["volume"] for x in self.data]
         self.figure.add_trace(
