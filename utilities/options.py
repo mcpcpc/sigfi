@@ -87,6 +87,6 @@ class CandlesFigures:
             secondary_y=True
         )
 
-    def get_figure() -> None:
+    def get_figure(self) -> None:
         """Return Plotly figure."""
         return self.figure
