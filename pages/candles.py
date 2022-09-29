@@ -120,7 +120,7 @@ def update_options(exchange_value):
 
 @callback(
     Output("candles", "figure"),
-    Input("product", "value"),
+    Input("products", "value"),
     Input("timeframe", "value"),
     Input("options", "value"))
 def update_candles(product, timeline, options):
