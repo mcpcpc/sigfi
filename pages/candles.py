@@ -86,7 +86,7 @@ def update_products(exchange_value):
     products = exchange.get_products()
     data = [dict(label=x["id"], value=x["id"]) for x in products]
     data_sorted = sorted(data, key=lambda d: d["label"])
-    value = data_sorted[0]["value"]
+    value = exchange.products.default
     return data_sorted, value
 
 @callback(

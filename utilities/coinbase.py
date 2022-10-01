@@ -51,11 +51,22 @@ class Candles(Action):
 
 
 @dataclass
+class Products(Action):
+    """Products action."""
+    
+    default: str = "BTC-USD"
+    allowed: List[dict] = field(
+        default_factory=lambda: []
+    )
+
+
+@dataclass
 class Coinbase(Exchange):
     """Coinbase exchange."""
 
     name: str = "Coinbase"
     endpoint: Endpoint = Endpoint("https://api.exchange.coinbase.com")
+    products: Action = Products()
     candles: Action = Candles()
     options: Action = Options()
 
