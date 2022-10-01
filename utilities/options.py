@@ -9,6 +9,19 @@ from typing import Optional
 from plotly import graph_objects
 from plotly import subplots
 
+def hex_to_rgb(value: str) -> tuple:
+    """Convert hexidecimal string to RGB tuple."""
+    red = int(value[1:3], 16)
+    green = int(value[3:5], 16)
+    blue = int(value[5:7], 16)
+    return (red, green, blue)
+
+def rgb_to_rgba(rgb: str, alpha:float) -> str:
+    """Compute RGBA string from RGB tuple."""
+    red, green, blue = rgb
+    rgba = f"rgba({red}, {green}, {blue}, {alpha})"
+    return rgba
+
 
 @dataclass
 class CandlesFigures:

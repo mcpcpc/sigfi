@@ -95,7 +95,6 @@ class Coinbase(Exchange):
         ohlcv = list(map(to_ohlcv, records))
         ohlcv_sorted = sorted(
             ohlcv,
-            reverse=True,
             key=lambda d: d["timestamp"]
         )
         return ohlcv_sorted
