@@ -118,7 +118,7 @@ class CandlesFigures:
                 name="MA" + str(period),
                 x=self.timestamp,
                 y=ma,
-                line_color=dmc.theme.DEFAULT_COLORS["yellow"],
+                line_color=dmc.theme.DEFAULT_COLORS["yellow"][6],
                 line = {"width": 1}
             ),
             row=1,
