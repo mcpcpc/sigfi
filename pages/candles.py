@@ -134,7 +134,7 @@ def update_candles(exchange, product, timeline, options):
     if "Volume" in options:
         cf.add_volume()
     if "Moving Average (MA)" in options:
-        cv.add_moving_average(20)
+        cf.add_moving_average(20)
     return cf.get_figure()
 
 register_page(
