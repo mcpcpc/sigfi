@@ -37,8 +37,7 @@ class Record:
             else:
                 ma_ = None
             ma.append(ma_)
-    
-    def ema(self)
+
 
 @dataclass
 class CandlesFigures:
