@@ -55,8 +55,12 @@ class CandlesFigures:
         figure.update_yaxes(
             gridcolor=rgba,
             row=1,
-            col=1,
-            secondary_y=False
+            col=1
+        )
+        figure.update_xaxes(
+            gridcolor=rgba,
+            row=1,
+            col=1
         )
         self.figure = figure
     
