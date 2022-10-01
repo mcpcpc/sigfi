@@ -115,7 +115,7 @@ class CandlesFigures:
             ma.append(ma_)
         self.figure.add_trace(
             graph_objects.Scatter(
-                name="MA" + str(period),
+                name="SMA" + str(period),
                 x=self.timestamp,
                 y=ma,
                 line_color=dmc.theme.DEFAULT_COLORS["yellow"][6],
