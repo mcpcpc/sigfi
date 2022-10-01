@@ -9,10 +9,44 @@ from typing import Optional
 from plotly import graph_objects
 from plotly import subplots
 
+@dataclass
+class Record:
+    """Generates a record object."""
+
+    data: List[dict]
+
+    def __getitem__(self, value) -> list:
+        try:
+            y = [d[value] for d in self.data]
+        except ValueError:
+            print("invalid value")
+        return y
+    
+    def __setitem__(self, label: str, values: list) -> None:
+        if not isinstance(values, list):
+            raise TypeError("Expected a list")
+        if len(values) != len(self.data):
+            raise ValueError("Expected a list of equal length")
+        for i, value in enumerate(values):
+            self.data[i].update({label: value})
+
+    def ma(self, period: int = 20):
+        """Compute simple moving average."""
+        ma = []
+        close = self.data["close"]
+        for i, _ in enumerate(self.close):
+            window = close[(i - period):i]
+            if len(window) > 0:
+                ma_ = sum(window) / len(window)
+            else:
+                ma_ = None
+            ma.append(ma_)
+    
+    def ema(self)
 
 @dataclass
 class CandlesFigures:
-    """Generates Candlestick Figure Objects."""
+    """Generates candlestick figure objects."""
 
     data: List[dict]
     figure: Optional[graph_objects.Figure] = None
@@ -21,17 +55,6 @@ class CandlesFigures:
     high: Optional[List] = None
     open: Optional[List] = None
     close: Optional[List] = None
-
-    def _compute_moving_average(self, x: List[float], period: int = 20) -> List[float]:
-        ma = []
-        for i, _ in enumerate(x):
-            window = x[(i - period):i]
-            if len(window) > 0:
-                ma.append(sum(window) / len(window))
-            else:
-                ma.append(None)
-        return ma
-
 
     def create_figure(self) -> None:
         """Create Plotly figure."""
