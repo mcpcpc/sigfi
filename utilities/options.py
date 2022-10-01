@@ -37,6 +37,8 @@ class CandlesFigures:
 
     def create_figure(self) -> None:
         """Create Plotly figure."""
+        rgb = hex_to_rgb(dmc.theme.DEFAULT_COLORS["indigo"][6])
+        rgba = rgb_to_rgba(rgb, 0.5)
         figure = subplots.make_subplots(
             specs=[[{"secondary_y": True}]],
             rows=1,
@@ -49,6 +51,12 @@ class CandlesFigures:
             xaxis_rangeslider_visible=False,
             margin=dict(l=0, r=0, t=0, b=0),
             showlegend=False
+        )
+        figure.update_yaxes(
+            gridcolor=rgba,
+            row=1,
+            col=1,
+            secondary_y=False
         )
         self.figure = figure
     
