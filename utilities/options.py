@@ -16,11 +16,7 @@ class Record:
     data: List[dict]
 
     def __getitem__(self, value) -> list:
-        try:
-            y = [d[value] for d in self.data]
-        except ValueError:
-            print("invalid value")
-        return y
+        return [d[value] for d in self.data]
     
     def __setitem__(self, label: str, values: list) -> None:
         if not isinstance(values, list):
@@ -33,7 +29,7 @@ class Record:
     def ma(self, period: int = 20):
         """Compute simple moving average."""
         ma = []
-        close = self.data["close"]
+        close = self.__getitem__("close")
         for i, _ in enumerate(self.close):
             window = close[(i - period):i]
             if len(window) > 0:
