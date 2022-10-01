@@ -9,35 +9,6 @@ from typing import Optional
 from plotly import graph_objects
 from plotly import subplots
 
-@dataclass
-class Record:
-    """Generates a record object."""
-
-    data: List[dict]
-
-    def __getitem__(self, value) -> list:
-        return [d[value] for d in self.data]
-    
-    def __setitem__(self, label: str, values: list) -> None:
-        if not isinstance(values, list):
-            raise TypeError("Expected a list")
-        if len(values) != len(self.data):
-            raise ValueError("Expected a list of equal length")
-        for i, value in enumerate(values):
-            self.data[i].update({label: value})
-
-    def ma(self, period: int = 20):
-        """Compute simple moving average."""
-        ma = []
-        close = self.__getitem__("close")
-        for i, _ in enumerate(self.close):
-            window = close[(i - period):i]
-            if len(window) > 0:
-                ma_ = sum(window) / len(window)
-            else:
-                ma_ = None
-            ma.append(ma_)
-
 
 @dataclass
 class CandlesFigures:
@@ -133,7 +104,7 @@ class CandlesFigures:
             ma.append(ma_)
         self.figure.add_trace(
             graph_objects.Scatter(
-                name="SMA" + str(period),
+                name="MA" + str(period),
                 x=self.timestamp,
                 y=ma,
                 line_color=dmc.theme.DEFAULT_COLORS["yellow"][6],
