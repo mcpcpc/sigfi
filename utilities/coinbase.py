@@ -18,8 +18,7 @@ class Options(Action):
 
     default: List[str] = field(
         default_factory=lambda: [
-            "Moving Average (MA)",
-            "Volume"
+            "Moving Average (MA)"
         ]
     )
     allowed: List[dict] = field(
