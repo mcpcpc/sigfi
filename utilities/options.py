@@ -114,7 +114,7 @@ class CandlesFigures:
                 ma_ = None
             ma.append(ma_)
         self.figure.add_trace(
-            graph_objects.scatter(
+            graph_objects.Scatter(
                 name="MA" + str(period),
                 x=self.timestamp,
                 y=ma,
