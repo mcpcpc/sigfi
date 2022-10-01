@@ -17,9 +17,9 @@ class CandlesFigures:
     data: List[dict]
     figure: Optional[graph_objects.Figure] = None
     timestamp: Optional[List] = None
-    open: Optional[List] = None
-    high: Optional[List] = None
     low: Optional[List] = None
+    high: Optional[List] = None
+    open: Optional[List] = None
     close: Optional[List] = None
 
     def _compute_moving_average(self, x: List[float], period: int = 20) -> List[float]:
@@ -45,8 +45,8 @@ class CandlesFigures:
             plot_bgcolor="rgba(0,0,0,0)",
             font_family="Inter, sans-serif",
             xaxis_rangeslider_visible=False,
-            #margin=dict(l=0, r=0, t=0, b=0),
-            #showlegend=False
+            margin=dict(l=0, r=0, t=0, b=0),
+            showlegend=False
         )
         self.figure = figure
     
@@ -63,9 +63,9 @@ class CandlesFigures:
             graph_objects.Candlestick(
                 name="Candles",
                 x=self.timestamp,
-                open=self.open,
-                high=self.high,
                 low=self.low,
+                high=self.high,
+                open=self.open,
                 close=self.close,
                 increasing_line_color=dmc.theme.DEFAULT_COLORS["indigo"][6],
                 increasing_line_width=2,
@@ -102,6 +102,28 @@ class CandlesFigures:
             secondary_y=True,
             visible=False
         )
+
+    def add_moving_average(self, period: int) -> None:
+        """Add simle moving average to figure."""
+        ma = []
+        for i in len(self.close):
+            window = self.close[i-period:i]
+            ma_ = sum(window) / len(window)
+            ma.append(ma_)
+        self.figure.add_trace(
+            graph_objects.scatter(
+                name="MA",
+                x=self.timestamp,
+                y=ma,
+                line_color=dmc.theme.DEFAULT_COLORS["yellow"],
+                line = {"width": 1}
+            ),
+            row=1,
+            col=1,
+            secondary_y=False
+        )
+
+
 
     def get_figure(self) -> None:
         """Return Plotly figure."""
