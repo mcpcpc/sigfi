@@ -108,7 +108,10 @@ class CandlesFigures:
         ma = []
         for i, _ in enumerate(self.close):
             window = self.close[i-period:i]
-            ma_ = sum(window) / len(window)
+            if len(window) > 0:
+                ma_ = sum(window) / len(window)
+            else:
+                ma_ = None
             ma.append(ma_)
         self.figure.add_trace(
             graph_objects.scatter(
