@@ -106,7 +106,7 @@ class CandlesFigures:
     def add_moving_average(self, period: int) -> None:
         """Add simle moving average to figure."""
         ma = []
-        for i in len(self.close):
+        for i, _ in enumerate(self.close):
             window = self.close[i-period:i]
             ma_ = sum(window) / len(window)
             ma.append(ma_)
