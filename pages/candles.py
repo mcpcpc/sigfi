@@ -139,7 +139,7 @@ def update_candles(exchange, product, timeline, options):
 
 register_page(
     __name__,
-    path="/candles/",
+    path="/candles",
     title="Candles | SigFi",
     description="Charts for OHLCV (open, high, low, close and volume) data.",
     layout=layout
