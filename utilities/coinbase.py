@@ -50,7 +50,7 @@ class Candles(Action):
     )
 
     def get_parameters(self, value: str) -> dict:
-        granularity = [x["value"] for x in exchange.candles.allowed if x["label"] == value]
+        granularity = [x["value"] for x in self.allowed if x["label"] == value]
         parameters = {"granularity": granularity}
         return parameters
 
