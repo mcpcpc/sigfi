@@ -128,13 +128,17 @@ def update_options(exchange_value):
     Input("products", "value"),
     Input("timeframe", "value"),
     Input("options", "value"))
-def update_candles(exchange, product, timeline, options):
+def update_candles(exchange, product, timeframe, options):
     if exchange == "COINBASE":
         exchange = Coinbase()
     else:
         return no_update, no_update
     data = exchange.get_candles(product)
-    cf = CandlesFigures(data)
+    timeframe_label = [x["value"] for x in exchange.candles.allowed if x["label"] == timeframe]
+    cf = CandlesFigures(
+            data,
+            timeframe_label[0]
+        )
     fig = cf.create_figure()
     cf.add_candles()
     if "Volume" in options:
