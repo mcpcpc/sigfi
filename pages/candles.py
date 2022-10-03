@@ -55,10 +55,16 @@ layout=dmc.Container(
         dmc.LoadingOverlay(
             loaderProps={"variant": "bars"},
             children=[
-                dcc.Graph(id="candles", config={"displayModeBar": False})
+                dcc.Graph(
+                    id="candles",
+                    config={"displayModeBar": False}
+                )
             ]
         ),
-        dcc.Interval(id="live_update", max_intervals=1)
+        dcc.Interval(
+            id="live_update",
+            max_intervals=0
+        )
     ]
 )
 
