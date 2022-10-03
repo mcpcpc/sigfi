@@ -137,7 +137,7 @@ def update_candles(exchange, product, timeframe, options):
     timeframe_label = [x["value"] for x in exchange.candles.allowed if x["label"] == timeframe]
     cf = CandlesFigures(
             data,
-            timeframe_label[0]
+            timeframe_label
         )
     fig = cf.create_figure()
     cf.add_candles()
