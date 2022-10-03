@@ -37,7 +37,7 @@ class CandlesFigures:
 
     def create_figure(self) -> None:
         """Create Plotly figure."""
-        rgb = hex_to_rgb(dmc.theme.DEFAULT_COLORS["indigo"][6])
+        rgb = hex_to_rgb(dmc.theme.DEFAULT_COLORS["dark"][5])
         rgba = rgb_to_rgba(rgb, 0.4)
         figure = subplots.make_subplots(
             specs=[[{"secondary_y": True}]],
@@ -133,7 +133,7 @@ class CandlesFigures:
                 name="MA" + str(period),
                 x=self.timestamp,
                 y=ma,
-                line_color=dmc.theme.DEFAULT_COLORS["yellow"][6],
+                line_color=dmc.theme.DEFAULT_COLORS["yellow"][4],
                 line = {"width": 1}
             ),
             row=1,
