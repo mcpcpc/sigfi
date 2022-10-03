@@ -134,11 +134,8 @@ def update_candles(exchange, product, timeframe, options):
     else:
         return no_update, no_update
     data = exchange.get_candles(product)
-    timeframe_label = [x["value"] for x in exchange.candles.allowed if x["label"] == timeframe]
-    cf = CandlesFigures(
-            data,
-            timeframe_label
-        )
+    params = exchange.candles.get_parameters(timeframe)
+    cf = CandlesFigures(data, params)
     fig = cf.create_figure()
     cf.add_candles()
     if "Volume" in options:

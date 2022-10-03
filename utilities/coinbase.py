@@ -49,6 +49,13 @@ class Candles(Action):
         ]
     )
 
+    def get_parameters(self, value: str) -> dict:
+        granularity = [x["value"] for x in exchange.candles.allowed if x["label"] == value]
+        parameters = {"granularity": granularity}
+        return parameters
+
+
+
 
 @dataclass
 class Products(Action):
