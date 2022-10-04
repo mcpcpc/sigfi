@@ -133,9 +133,9 @@ def update_candles(exchange, product, timeframe, options):
         exchange = Coinbase()
     else:
         return no_update, no_update
-    data = exchange.get_candles(product)
     params = exchange.candles.get_parameters(timeframe)
-    cf = CandlesFigures(data, params)
+    data = exchange.get_candles(product, params)
+    cf = CandlesFigures(data)
     fig = cf.create_figure()
     cf.add_candles()
     if "Volume" in options:
