@@ -133,7 +133,8 @@ def update_candles(exchange, product, timeframe, options):
         exchange = Coinbase()
     else:
         return no_update, no_update
-    params = exchange.candles.get_parameters(timeframe)
+    params = exchange.candles.lookup(timeframe)
+    print(params)
     data = exchange.get_candles(product, params)
     cf = CandlesFigures(data)
     fig = cf.create_figure()

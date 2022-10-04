@@ -49,8 +49,8 @@ class Candles(Action):
         ]
     )
 
-    def get_parameters(self, value: str) -> dict:
-        granularity = [x["value"] for x in self.allowed if x["label"] == value]
+    def lookup(self, label: str) -> dict:
+        granularity = [x["value"] for x in self.allowed if x["label"] == label]
         parameters = {"granularity": granularity}
         return parameters
 
