@@ -50,11 +50,11 @@ class Candles(Action):
     )
 
     def lookup(self, label: str) -> dict:
+        if not isinstance(label, str):
+            raise ValueError("label value not str type")
         granularity = [x["value"] for x in self.allowed if x["label"] == label]
         parameters = {"granularity": granularity}
         return parameters
-
-
 
 
 @dataclass
