@@ -28,6 +28,7 @@ class Endpoint:
             headers=self.headers,
             params=params
         )
+        print(response.url)
         return response.json()
 
 
