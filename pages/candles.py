@@ -129,6 +129,8 @@ def update_options(exchange_value):
     Input("timeframe", "value"),
     Input("options", "value"))
 def update_candles(exchange, product, timeframe, options):
+    if None in [exchange, product, timeframe]:
+        no_update
     if exchange == "COINBASE":
         exchange = Coinbase()
     else:
