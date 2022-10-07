@@ -55,11 +55,12 @@ class Candles(Action):
         if not isinstance(label, str):
             raise ValueError("label value not str type")
         granularity = [x["value"] for x in self.allowed if x["label"] == label]
-        parameters = {"granularity": granularity[0]}
+        parameters = {"granularity": granularity}
         return parameters
 
 
 @dataclass
+
 class Products(Action):
     """Products action."""
     
