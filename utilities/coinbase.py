@@ -50,6 +50,7 @@ class Candles(Action):
     )
 
     def lookup(self, label: str) -> dict:
+        print(label) 
         """Lookup allowed value and return parameters dictionary."""
         if not isinstance(label, str):
             raise ValueError("label value not str type")
